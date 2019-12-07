@@ -2,10 +2,8 @@ defmodule HarveynormanIe do
   @behaviour Crawly.Spider
 
   require Logger
-
   @impl Crawly.Spider
   def base_url(), do: "https://www.harveynorman.ie"
-
   @impl Crawly.Spider
   def init() do
     [
@@ -30,10 +28,6 @@ defmodule HarveynormanIe do
       |> Floki.attribute("href")
 
     all_urls = pagination_urls ++ product_urls
-
-    Logger.info("Response body ol pager", response.body |> Floki.find("ol.pager li"))
-    Logger.info("All URLs", all_urls)
-    Logger.info("All URLs built", all_urls |> Enum.map(&build_absolute_url/1))
 
     # Converting URLs into Crawly requests
     requests =
