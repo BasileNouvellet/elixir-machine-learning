@@ -8,10 +8,12 @@ config :crawly,
   follow_redirects: true,
   # Define item structure (required fields)
   item: [
-    :title,
     :id,
-    :category,
-    :description
+    :title,
+    :brand,
+    :images
+    # :category,
+    # :description
   ],
   # Define item identifyer (used to filter out duplicated items)
   item_id: :id,
@@ -20,6 +22,7 @@ config :crawly,
     Crawly.Pipelines.Validate,
     Crawly.Pipelines.DuplicatesFilter,
     Crawly.Pipelines.JSONEncoder
-  ]
+  ],
+  base_store_path: "tmp/"
 
 import_config "#{Mix.env()}.exs"
