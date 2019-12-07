@@ -24,3 +24,6 @@ products_advisor-*.tar
 
 # Elixir LS from VSCode
 /.elixir_ls/
+
+# Data collected by Spider
+/tmp/
